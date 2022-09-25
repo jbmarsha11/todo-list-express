@@ -1,47 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- //tells browser to expect html -->
+<!DOCTYPE html> 
+<!-- what language the html is written in  -->
+<!-- <html lang="en">
+where you put meta data, css, other style links, title of document -->
 <head>
+    <!-- specifies the character encoding for the HTML document -->
     <meta charset="UTF-8">
+    <!-- allows web authors to choose what version of Internet Explorer the page should be rendered as -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- allows page to be dynamic, work with mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- what will show up in the tab of your browser -->
     <title>Document</title>
+    <!-- font font-awesome library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- links style sheet -->
     <link rel="stylesheet" href="css/style.css">
+<!-- closing the head -->
 </head>
+<!-- where you put all the text you want to show up in the browser -->
 <body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <!-- our biggest element on the page -->
     <h1>Todo List: </h1>
+    <!-- start of an unordered list with a class of todoItems -->
     <ul class="todoItems">
+        <!-- ejs that looks through each item in the list and puts them on the page -->
     <% for(let i=0; i < items.length; i++) {%>
+        <!-- list item with the class item -->
         <li class="item">
+            <!-- if item at a certain index is true -->
             <% if(items[i].completed === true) {%>
+                <!-- add a span with the class completed with the item next to it -->
                 <span class='completed'><%= items[i].thing %></span>
+                <!-- if the item doesn't != true do the below -->
             <% }else{ %>
+                <!-- add a span with the item without the class completed -->
                 <span><%= items[i].thing %></span>
+                <!-- closing bracket for else -->
             <% } %>    
             <span class='fa fa-trash'></span>
+            <!-- closing list item -->
         </li>
+        <!-- closing for loop -->
     <% } %>
+    <!-- closing unordered list -->
     </ul>
-
+    <!-- second most important element on the page -->
     <h2>Left to do: <%= left %></h2>
-
+    <!-- second most important element on the page -->
     <h2>Add A Todo:</h2>
-
+    <!-- form so our js can get data out of our page -->
     <form action="/addTodo" method="POST">
+        <!-- place to put text that is a thing to do -->
         <input type="text" placeholder="Thing To Do" name="todoItem">
+        <!-- button to add the above onto the list -->
         <input type="submit">
+        <!-- end of form -->
     </form>
     
-
+    <!-- linking our main.js file to our html -->
     <script src='js/main.js'></script>
+<!-- closing body -->
 </body>
+<!-- closing html -->
 </html>
